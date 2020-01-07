@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {withFormik, Form, Field} from 'formik';
+import {withFormik, Field} from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -9,8 +9,10 @@ const Page = styled.div`
     display:flex;
     justify-contents:center;
     align-items: center;
+    margin-top: 200px;
     margin-left: 600px;
     max-width: 400px;
+    background-color: papayawhip;
 
 `;
 
@@ -24,14 +26,15 @@ const SignupForm =({ values, errors, touched, status}) => {
         status && setUser(users =>[...users, status]);
     }, [status]);
 
+    
     return (
-        <Page class="card is-center">
+        <Page className="card is-center">
            
-                <div class="card-content register">
-                <p class="title">Wanna Register?</p>
-                    <label class="label">Username</label>
-                    <Field class="field"
-                        type="text" name="username" placeholder="Create Username here"/>
+                <div className="card-content register">
+                <p className="title">Wanna Register?</p>
+                    <label className="label">Username</label>
+                    <Field className="field"
+                        type="text" name="username" placeholder="Create Username"/>
                         {touched.username && errors.username && (
                         <p className="errors">{errors.username}</p>
                     )}
@@ -40,14 +43,14 @@ const SignupForm =({ values, errors, touched, status}) => {
                         {touched.first_last && errors.first_last && (
                         <p className="errors">{errors.first_last}</p>
                     )} */}
-                    <label class="label">Password</label>
-                    <Field class="field" 
+                    <label className="label">Password</label>
+                    <Field className="field" 
                         type="password" name="password" placeholder="Create Password"/>
                         {touched.password && errors.password && (
                         <p className="errors">{errors.password}</p>
                     )}
                     <div>
-                        <button class="button is-primary" onClick='/login'>Sign Up</button>
+                        <button className="button is-primary">Sign Up</button>
                     </div>
 
                 </div>
