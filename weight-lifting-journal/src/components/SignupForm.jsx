@@ -4,7 +4,18 @@ import * as yup from 'yup';
 import axios from 'axios';
 import styled from 'styled-components';
 import bulma from 'bulma';
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
+
+const Page = styled.div`
+    display:flex;
+    justify-contents:center;
+    align-items: center;
+    margin-left: 600px;
+    max-width: 400px;
+
+`;
+
+
+
 
 const SignupForm =({ values, errors, touched, status}) => {
     const[user, setUser]= useState([]);
@@ -14,27 +25,34 @@ const SignupForm =({ values, errors, touched, status}) => {
     }, [status]);
 
     return (
-        <div>
+        <Page class="card is-center">
            
-                <h3>Wanna Register?</h3>
-                <Form>
-                    <Field type="text" name="username" placeholder="Create Username here"/>
-                    {touched.username && errors.username && (
+                <div class="card-content register">
+                <p class="title">Wanna Register?</p>
+                    <label class="label">Username</label>
+                    <Field class="field"
+                        type="text" name="username" placeholder="Create Username here"/>
+                        {touched.username && errors.username && (
                         <p className="errors">{errors.username}</p>
                     )}
-                    <Field type="text" name="first_last" placeholder="First and Last Name"/>
-                    {touched.first_last && errors.first_last && (
+                    {/* <Field class="field"  
+                        type="text" name="first_last" placeholder="First and Last Name"/>
+                        {touched.first_last && errors.first_last && (
                         <p className="errors">{errors.first_last}</p>
-                    )}
-                    <Field type="password" name="password" placeholder="Create Password"/>
-                    {touched.password && errors.password && (
+                    )} */}
+                    <label class="label">Password</label>
+                    <Field class="field" 
+                        type="password" name="password" placeholder="Create Password"/>
+                        {touched.password && errors.password && (
                         <p className="errors">{errors.password}</p>
                     )}
-                    <button onClick='/login'>Sign Up</button>
+                    <div>
+                        <button class="button is-primary" onClick='/login'>Sign Up</button>
+                    </div>
 
-                </Form>
+                </div>
             
-        </div>
+        </Page>
     );
 };
 
