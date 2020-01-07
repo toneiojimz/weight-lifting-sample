@@ -5,6 +5,7 @@ import './App.css';
 import PrivateRoute from "./components/PrivateRoute.js";
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
+import SignUpForm from'./components/SignUpForm'
 
 function App() {
   return (
@@ -13,12 +14,13 @@ function App() {
       <div>
         <Link to="/login">Login</Link>
         <br></br>
-        <Link to="/register">Register</Link>
+        <Link to="/">Register</Link>
       </div>
       <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        
         <Route path="/login" component={Login} />
-        <Route component={Login} />
+        <Route component={SignUpForm} />
       </Switch>
     </div>
   </Router>
