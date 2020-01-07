@@ -79,7 +79,7 @@ const FormikUserForm = withFormik({
 
             })
             .catch(error =>(
-                console.log("what went wrong?", error.response)))
+                console.log("What went wrong?", error.response)))
     }
 })(SignupForm);
 
