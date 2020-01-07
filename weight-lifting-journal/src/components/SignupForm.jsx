@@ -13,10 +13,7 @@ const Page = styled.div`
     margin-left: 600px;
     max-width: 400px;
     background-color: papayawhip;
-
 `;
-
-
 
 
 const SignupForm =({ values, errors, touched, status}) => {
@@ -38,11 +35,6 @@ const SignupForm =({ values, errors, touched, status}) => {
                         {touched.username && errors.username && (
                         <p className="errors">{errors.username}</p>
                     )}
-                    {/* <Field class="field"  
-                        type="text" name="first_last" placeholder="First and Last Name"/>
-                        {touched.first_last && errors.first_last && (
-                        <p className="errors">{errors.first_last}</p>
-                    )} */}
                     <label className="label">Password</label>
                     <Field className="field" 
                         type="password" name="password" placeholder="Create Password"/>
@@ -50,26 +42,29 @@ const SignupForm =({ values, errors, touched, status}) => {
                         <p className="errors">{errors.password}</p>
                     )}
                     <div>
-                        <button className="button is-primary">Sign Up</button>
+                        <button className="button is-primary" type="submit">Sign Up</button>
                     </div>
-
                 </div>
+                {user.map(user => (
+                    <ul key={user.id}>
+                        <li>Username: {user.username}</li>
+                        <li>Password: {user.password}</li>
+                    </ul>
+                ))}
             
         </Page>
     );
 };
 
 const FormikUserForm = withFormik({
-    mapPropsToValues({ username, first_last, password}){
+    mapPropsToValues({ username, password}){
         return{
             username: username || "",
-            first_last: first_last || "",
             password: password || ""
         };
     },
     validationSchema: yup.object().shape({
         username: yup.string().required(),
-        first_last: yup.string().required(),
         password: yup.string().required()
     }),
 
