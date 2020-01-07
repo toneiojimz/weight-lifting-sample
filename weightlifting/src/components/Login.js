@@ -1,5 +1,5 @@
 import React, { useState }from "react";
-import axiosWithAuth from "../utils/axiosWithAuth.js";
+import axios from "axios"
 
 const Login = props => {
   const[userCredentials, setUserCredentials] = useState({username:'', password:''})
@@ -15,8 +15,8 @@ const Login = props => {
 
   const onSubmit = e => {
     e.preventDefault();
-    axiosWithAuth()
-    .post('api/auth/login', userCredentials)
+    axios
+    .post('https://authbackend121.herokuapp.com/api/auth/login', userCredentials)
     .then(res => {
       localStorage.setItem('token', res.data.payload)
       props.history.push('/dashboard')
