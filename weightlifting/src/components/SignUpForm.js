@@ -1,75 +1,97 @@
-import React, {useEffect, useState} from 'react';
-import {withFormik, Field} from 'formik';
+import React, { useState, useEffect } from 'react';
+import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-import styled from 'styled-components';
-import bulma from 'bulma';
+import styled from "styled-components";
 
-const Page = styled.div`
-    display:flex;
-    justify-contents:center;
-    align-items: center;
-    margin-top: 200px;
-    margin-left: 600px;
-    max-width: 400px;
-    background-color: papayawhip;
+const Main = styled.div`
+height: 89vh;
+background-color: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+`
+
+const Form2 = styled(Form)`
+border: 3px solid black;
+background-color: #ffffff;
+padding: 20px;
 `;
 
+const Title = styled.h3`
+text-align: center;
+margin: 10%;
+`
+const Text = styled.div`
+display: flex;
+flex-direction: column;
+padding: 60px;
+`
 
-const SignupForm =({ values, errors, touched, status}) => {
-    const[user, setUser]= useState([]);
+const Input2 = styled(Field)`
+width: 100%;
+margin-top: 5%;
+margin-bottom: 5%;
+`
+
+const ButtonReg = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: #17A2B8;
+`
+
+const SignupForm = ({ values, errors, touched, status }) => {
+    const [user, setUser] = useState([]);
 
     useEffect(() => {
-        status && setUser(users =>[...users, status]);
+        status && setUser(users => [...users, status]);
     }, [status]);
 
 
     return (
-        <Page className="card is-center">
 
-                <div className="card-content register">
-                <p className="title">Wanna Register?</p>
-                    <label className="label">Username</label>
-                    <Field className="field"
-                        type="text" name="username" placeholder="Create Username"/>
-                        {touched.username && errors.username && (
-                        <p className="errors">{errors.username}</p>
-                    )}
-                    <label className="label">Password</label>
-                    <Field className="field" 
-                        type="password" name="password" placeholder="Create Password"/>
-                        {touched.password && errors.password && (
-                        <p className="errors">{errors.password}</p>
-                    )}
-                    <div>
-                        <button className="button is-primary" type="submit">Sign Up</button>
-                    </div>
-                </div>
-                {user.map(user => (
-                    <ul key={user.id}>
-                        <li>Username: {user.username}</li>
-                        <li>Password: {user.password}</li>
-                    </ul>
-                ))}
-
-        </Page>
+        <Main className="user-form">
+            <Form2 >
+                <Title>Let's Get Some Info Before We Start Lifting:</Title>
+                <Text>
+                <label className="label">Username</label>
+                <Input2 type="text" name="username" placeholder="Create a Username" />
+                {touched.username && errors.username && (
+                    <p className="errors"> {errors.username}</p>
+                )}
+                <label className="Password">Password</label>
+                <Input2 type="password" name="password" placeholder="Create a Password " />
+                {touched.password && errors.password && (
+                    <p className="errors"> {errors.password}</p>
+                )}
+                
+                <ButtonReg>
+                    <button>Reigster New User</button>
+                </ButtonReg>
+                </Text>
+            </Form2>
+        </Main>
     );
 };
 
+
 const FormikUserForm = withFormik({
-    mapPropsToValues({ username, password}){
-        return{
+    mapPropsToValues({ username, password}) {
+        return {
             username: username || "",
-            password: password || ""
+            password: password || ""  
+
         };
     },
     validationSchema: yup.object().shape({
         username: yup.string().required(),
         password: yup.string().required()
+
     }),
-
-    handleSubmit(values, {setStatus, props}){
-
+    handleSubmit(values, { setStatus, props }) {
         axios
             .post("https://authbackend121.herokuapp.com/api/auth/register", values)
             .then(response => {
@@ -78,9 +100,9 @@ const FormikUserForm = withFormik({
                 props.history.push("/login")
 
             })
-            .catch(error =>(
-                console.log("what went wrong?", error.response)))
+            .catch(err => console.log(err.response));
     }
+
 })(SignupForm);
 
 export default FormikUserForm;

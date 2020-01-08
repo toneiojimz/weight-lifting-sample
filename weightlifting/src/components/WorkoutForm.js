@@ -27,7 +27,7 @@ const WorkoutForm = props => {
     return(
     <div>
         <form >
-           <input placeholder='Name of exercise' 
+           <input placeholder='Name of Exercise' 
                   name='name' 
                   type= 'text'
                   value={props.name} 
