@@ -3,12 +3,6 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
-<<<<<<< HEAD
-import bulma from 'bulma';
-
-
-=======
->>>>>>> 6430b0088ae98fa3792fd729fab361ec4d6399c8
 
 const Main = styled.div`
 height: 89vh;
@@ -26,12 +20,6 @@ background-color: #ffffff;
 padding: 20px;
 `;
 
-<<<<<<< HEAD
-const Input = styled(Field)`
-margin: 3%;
-`
-=======
->>>>>>> 6430b0088ae98fa3792fd729fab361ec4d6399c8
 const Title = styled.h3`
 text-align: center;
 margin: 10%;
@@ -48,16 +36,6 @@ margin-top: 5%;
 margin-bottom: 5%;
 `
 
-<<<<<<< HEAD
-const Buttonc = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-`
-
-
-
-=======
 const ButtonReg = styled.div`
 display: flex;
 align-items: center;
@@ -65,7 +43,6 @@ justify-content: center;
 background-color: #17A2B8;
 `
 
->>>>>>> 6430b0088ae98fa3792fd729fab361ec4d6399c8
 const SignupForm = ({ values, errors, touched, status }) => {
     const [user, setUser] = useState([]);
 
@@ -78,11 +55,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
 
         <Main className="user-form">
             <Form2 >
-<<<<<<< HEAD
-                <Title>Wanna Register?</Title>
-=======
                 <Title>Let's Get Some Info Before We Start Lifting:</Title>
->>>>>>> 6430b0088ae98fa3792fd729fab361ec4d6399c8
                 <Text>
                 <label className="label">Username</label>
                 <Input2 type="text" name="username" placeholder="Create a Username" />
@@ -95,20 +68,11 @@ const SignupForm = ({ values, errors, touched, status }) => {
                     <p className="errors"> {errors.password}</p>
                 )}
                 
-<<<<<<< HEAD
-                <Buttonc>
-                    <button className="button is-primary">Sign Up</button>
-                </Buttonc>
-                </Text>
-            </Form2>
-
-=======
                 <ButtonReg>
                     <button>Reigster New User</button>
                 </ButtonReg>
                 </Text>
             </Form2>
->>>>>>> 6430b0088ae98fa3792fd729fab361ec4d6399c8
         </Main>
     );
 };
@@ -137,12 +101,9 @@ const FormikUserForm = withFormik({
 
             })
             .catch(err => console.log(err.response));
+           
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6430b0088ae98fa3792fd729fab361ec4d6399c8
 })(SignupForm);
 
 export default FormikUserForm;

@@ -4,17 +4,11 @@ import styled from "styled-components";
 import './App.css';
 
 import PrivateRoute from "./components/PrivateRoute.js";
-<<<<<<< HEAD
+import Landing from "./components/Landing";
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import SignUpForm from'./components/SignUpForm';
 import WorkoutForm from './components/WorkoutForm';
-=======
-import Landing from "./components/Landing";
-import Login from './components/Login'
-import Dashboard from './components/Dashboard'
-import SignUpForm from'./components/SignUpForm'
->>>>>>> 6430b0088ae98fa3792fd729fab361ec4d6399c8
 
 import logo from '../src/Liftlogo.png'
 
@@ -46,15 +40,11 @@ function App() {
       </div>
       <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
-<<<<<<< HEAD
-        <PrivateRoute path="/workoutform" component={WorkoutForm}/>
-
-=======
   
->>>>>>> 6430b0088ae98fa3792fd729fab361ec4d6399c8
         <Route path="/login" component={Login} />
         <Route path="/register" component={SignUpForm} />
         <Route exact path="/" component ={Landing} />
+        <Route path="/workoutform" component={WorkoutForm}/>
       </Switch>
     </div>
   </Router>
