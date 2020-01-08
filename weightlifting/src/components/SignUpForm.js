@@ -105,7 +105,7 @@ const FormikUserForm = withFormik({
             .then(response => {
                 console.log(response);
                 setStatus(response.data);
-                props.history.push("/login")
+                props.history.push('/login')
 
             })
             .catch(err => console.log(err.response));
