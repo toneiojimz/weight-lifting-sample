@@ -3,9 +3,9 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
-import bulma from 'bulma';
 
-
+import desktopRegisterImage from '../images/register.jpg';
+import mobileRegisterImage from '../images/register-mobile.jpg'
 
 const Main = styled.div`
 height: 89vh;
@@ -57,10 +57,11 @@ const SignupForm = ({ values, errors, touched, status }) => {
         status && setUser(users => [...users, status]);
     }, [status]);
 
+    const imageUrl = useWindowWidth() >= 650 ? desktopRegisterImage : mobileRegisterImage;
 
     return (
 
-        <Main className="user-form">
+        <Main className="user-form" style={{backgroundImage: `url(${imageUrl})` }}>
             <Form2 >
                 <Title>Wanna Register?</Title>
                 <Text>
@@ -85,6 +86,20 @@ const SignupForm = ({ values, errors, touched, status }) => {
     );
 };
 
+const useWindowWidth = () => {
+    const [windowWidth, setWindowWidth ] = useState(window.innerWidth);
+
+    const handleWindowResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowResize);
+        return () => window.removeEventListener('resize', handleWindowResize);
+    },[]);
+
+    return windowWidth;
+    };
 
 const FormikUserForm = withFormik({
     mapPropsToValues({ username, password}) {
@@ -110,7 +125,6 @@ const FormikUserForm = withFormik({
             })
             .catch(err => console.log(err.response));
     }
-
 
 })(SignupForm);
 
