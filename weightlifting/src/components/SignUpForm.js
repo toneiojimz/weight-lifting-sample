@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import styled from "styled-components";
+
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-import styled from "styled-components";
+
+import desktopRegisterImage from '../images/register.jpg';
+import mobileRegisterImage from '../images/register-mobile.jpg';
 
 const Main = styled.div`
 height: 89vh;
@@ -18,6 +22,8 @@ flex-direction: column;
 border: 3px solid #17A2B8;
 background-color: #ffffff;
 padding: 20px 40px 40px 40px;
+max-width: 70%;
+min-width: 300px;
 `
 
 const TitleRegister = styled.h3`
@@ -59,20 +65,20 @@ const SignupForm = ({ values, errors, touched, status }) => {
         status && setUser(users => [...users, status]);
     }, [status]);
 
+    const imageUrl = useWindowWidth() >= 650 ? desktopRegisterImage : mobileRegisterImage;
 
     return (
-
-        <Main className="user-form">
+        <Main className="user-form" style={{backgroundImage: `url(${imageUrl})` }}>
             <FormRegister >
                 <TitleRegister>Let's Get Some Info Before We Start Lifting:</TitleRegister>
                 <ContentRegister>
                 <TextRegister><label className="label">Username</label></TextRegister>
-                <InputRegister type="text" name="username" placeholder=" Create a Username" />
+                <InputRegister type="text" name="Username" placeholder=" Create a Username" />
                 {touched.username && errors.username && (
                     <p className="errors"> {errors.username}</p>
                 )}
                 <TextRegister><label className="Password">Password</label></TextRegister>
-                <InputRegister type="password" name="password" placeholder=" Create a Password " />
+                <InputRegister type="password" name="Password" placeholder=" Create a Password " />
                 {touched.password && errors.password && (
                     <p className="errors"> {errors.password}</p>
                 )}
@@ -86,6 +92,20 @@ const SignupForm = ({ values, errors, touched, status }) => {
     );
 };
 
+const useWindowWidth = () => {
+    const [windowWidth, setWindowWidth ] = useState(window.innerWidth);
+
+    const handleWindowResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowResize);
+        return () => window.removeEventListener('resize', handleWindowResize);
+    },[]);
+
+    return windowWidth;
+    };
 
 const FormikUserForm = withFormik({
     mapPropsToValues({ username, password}) {

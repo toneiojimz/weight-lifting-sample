@@ -4,6 +4,9 @@ import { addPost } from '../actions';
 
 
 
+
+
+
 const WorkoutForm = props => {
     const [user, setUser] = useState({
         name: "",

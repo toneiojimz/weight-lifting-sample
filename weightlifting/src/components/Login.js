@@ -1,7 +1,9 @@
-import React, { useState }from "react";
+import React, { useState, useEffect }from "react";
 import styled from "styled-components";
 import axios from "axios"
 
+import desktopLoginImage from '../images/login.jpg';
+import mobileLoginImage from '../images/login-mobile.jpg';
 
 const MainLogin = styled.div`
 height: 89vh;
@@ -17,6 +19,8 @@ flex-direction: column;
 border: 3px solid #17A2B8;
 background-color: #ffffff;
 padding: 20px 40px 40px 40px;
+max-width: 60%;
+min-width: 200px;
 `
 
 const TitleLogin = styled.h3`
@@ -73,8 +77,10 @@ const Login = props => {
     .catch(err => console.error(err))
   }
 
+  const imageUrl = useWindowWidth() >= 650 ? desktopLoginImage : mobileLoginImage;
+
   return (
-    <MainLogin className="login-form">
+    <MainLogin className="login-form" style={{backgroundImage: `url(${imageUrl})` }}>
       <FormLogin  onSubmit={onSubmit}>
       <TitleLogin>
         Welcome Back!
@@ -99,5 +105,20 @@ const Login = props => {
     </MainLogin>
   );
 };
+
+const useWindowWidth = () => {
+  const [windowWidth, setWindowWidth ] = useState(window.innerWidth);
+
+  const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+      window.addEventListener('resize', handleWindowResize);
+      return () => window.removeEventListener('resize', handleWindowResize);
+  },[]);
+
+  return windowWidth;
+  };
 
 export default Login;

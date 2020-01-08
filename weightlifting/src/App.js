@@ -19,12 +19,11 @@ const Nav = styled.nav`
   width: 100%;
 `
 
-const NavLogoContainer = styled.div`
+const NavLogo = styled.img`
 display: flex;
 justify-content: center;
-height: 40vh;
-width: 50%;
-margin: 10%;
+max-height: 200px;
+padding: 5% 0 0;
 `
 
 const NavLinksContainer = styled.div`
@@ -42,9 +41,10 @@ function App() {
     
     <div className="App">
       <Nav  className ="nav">
-        <Link to="/">
-          <img src={logo} alt="Logo" />
-        </Link>
+          <Link to="/">
+            <NavLogo src={logo} alt="Logo" />
+          </Link>
+        
         <NavLinksContainer>
           <Link style={{ textDecoration: 'none', color: '#17A2B8' }} to="/login">Login </Link> 
           <Link style={{ textDecoration: 'none', color: '#17A2B8' }} to="/register"> Register</Link>
