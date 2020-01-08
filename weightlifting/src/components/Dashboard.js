@@ -8,7 +8,7 @@ const Dashboard = () => {
             <h1>put user data here!</h1>
 
             <button>
-            <Link to="/workoutform">Create a Workout</Link>
+            <Link to="/workoutform">Create Workout</Link>
             </button>
         </div>
     )
