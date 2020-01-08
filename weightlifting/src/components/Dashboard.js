@@ -5,7 +5,7 @@ const Dashboard = () => {
 
     return(
         <div>
-            <h1>put user data here!</h1>
+            <h1>Workouts!</h1>
 
             <button>
             <Link to="/workoutform">Create Workout</Link>
