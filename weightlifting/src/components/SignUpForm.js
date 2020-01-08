@@ -3,9 +3,6 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
-import bulma from 'bulma';
-
-
 
 const Main = styled.div`
 height: 89vh;
@@ -23,9 +20,6 @@ background-color: #ffffff;
 padding: 20px;
 `;
 
-const Input = styled(Field)`
-margin: 3%;
-`
 const Title = styled.h3`
 text-align: center;
 margin: 10%;
@@ -42,13 +36,12 @@ margin-top: 5%;
 margin-bottom: 5%;
 `
 
-const Buttonc = styled.div`
+const ButtonReg = styled.div`
 display: flex;
 align-items: center;
 justify-content: center;
+background-color: #17A2B8;
 `
-
-
 
 const SignupForm = ({ values, errors, touched, status }) => {
     const [user, setUser] = useState([]);
@@ -62,7 +55,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
 
         <Main className="user-form">
             <Form2 >
-                <Title>Let's Get Some Info Before We Start:</Title>
+                <Title>Let's Get Some Info Before We Start Lifting:</Title>
                 <Text>
                 <label className="label">Username</label>
                 <Input2 type="text" name="username" placeholder="Create a Username" />
@@ -75,12 +68,11 @@ const SignupForm = ({ values, errors, touched, status }) => {
                     <p className="errors"> {errors.password}</p>
                 )}
                 
-                <Buttonc>
-                    <button className="button is-primary">Sign Up</button>
-                </Buttonc>
+                <ButtonReg>
+                    <button>Reigster New User</button>
+                </ButtonReg>
                 </Text>
             </Form2>
-
         </Main>
     );
 };
@@ -110,7 +102,6 @@ const FormikUserForm = withFormik({
             })
             .catch(err => console.log(err.response));
     }
-
 
 })(SignupForm);
 
