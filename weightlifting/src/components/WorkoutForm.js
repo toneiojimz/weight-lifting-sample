@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { addPost } from '../actions';
 
 
 
-const WorkoutForm = props => {
+
+const WorkoutForm = (props) => {
     const [user, setUser] = useState({
         name: "",
         date: "",
@@ -52,6 +51,6 @@ const WorkoutForm = props => {
     </div>
 
     );
-}
+};
 
-export default connect(null, { addPost })(WorkoutForm);
+export default WorkoutForm;
