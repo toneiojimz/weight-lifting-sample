@@ -1,62 +1,54 @@
 import React, { useState, useEffect } from 'react';
-import styled from "styled-components";
-
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
+import styled from "styled-components";
 
 import desktopRegisterImage from '../images/register.jpg';
-import mobileRegisterImage from '../images/register-mobile.jpg';
+import mobileRegisterImage from '../images/register-mobile.jpg'
 
 const Main = styled.div`
 height: 89vh;
+background-color: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+`
+
+const Form2 = styled(Form)`
+border: 3px solid black;
+background-color: #ffffff;
+padding: 20px;
+`;
+
+const Input = styled(Field)`
+margin: 3%;
+`
+const Title = styled.h3`
+text-align: center;
+margin: 10%;
+`
+const Text = styled.div`
 display: flex;
 flex-direction: column;
+padding: 60px;
+`
+
+const Input2 = styled(Field)`
+width: 100%;
+margin-top: 5%;
+margin-bottom: 5%;
+`
+
+const Buttonc = styled.div`
+display: flex;
 align-items: center;
 justify-content: center;
 `
 
-const FormRegister = styled(Form)`
-display: flex;
-flex-direction: column;
-border: 3px solid #17A2B8;
-background-color: #ffffff;
-padding: 20px 40px 40px 40px;
-max-width: 70%;
-min-width: 300px;
-`
 
-const TitleRegister = styled.h3`
-text-align: center;
-margin: 10%;
-`
-
-const ContentRegister = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-padding: 10px 0 40px 0;
-`
-
-const TextRegister = styled.p`
-display: flex;
-flex-direction: column;
-`
-
-const InputRegister = styled(Field)`
-padding: 5px 0;
-width: 100%;
-`
-
-const ButtonRegister = styled.button`
-background-color: #17A2B8;
-border-radius: 8px;
-font-size: 1rem;
-margin-top: 10%;
-width: 200px;
-height: 35px;
-color: white;
-`
 
 const SignupForm = ({ values, errors, touched, status }) => {
     const [user, setUser] = useState([]);
@@ -68,26 +60,28 @@ const SignupForm = ({ values, errors, touched, status }) => {
     const imageUrl = useWindowWidth() >= 650 ? desktopRegisterImage : mobileRegisterImage;
 
     return (
+
         <Main className="user-form" style={{backgroundImage: `url(${imageUrl})` }}>
-            <FormRegister >
-                <TitleRegister>Let's Get Some Info Before We Start Lifting:</TitleRegister>
-                <ContentRegister>
-                <TextRegister><label className="label">Username</label></TextRegister>
-                <InputRegister type="text" name="Username" placeholder=" Create a Username" />
+            <Form2 >
+                <Title>Wanna Register?</Title>
+                <Text>
+                <label className="label">Username</label>
+                <Input2 type="text" name="username" placeholder="Create a Username" />
                 {touched.username && errors.username && (
                     <p className="errors"> {errors.username}</p>
                 )}
-                <TextRegister><label className="Password">Password</label></TextRegister>
-                <InputRegister type="password" name="Password" placeholder=" Create a Password " />
+                <label className="Password">Password</label>
+                <Input2 type="password" name="password" placeholder="Create a Password " />
                 {touched.password && errors.password && (
                     <p className="errors"> {errors.password}</p>
                 )}
                 
-                <ButtonRegister>
-                    Register New User
-                </ButtonRegister>
-                </ContentRegister>
-            </FormRegister>
+                <Buttonc>
+                    <button className="button is-primary">Sign Up</button>
+                </Buttonc>
+                </Text>
+            </Form2>
+
         </Main>
     );
 };
@@ -126,7 +120,7 @@ const FormikUserForm = withFormik({
             .then(response => {
                 console.log(response);
                 setStatus(response.data);
-                props.history.push("/login")
+                props.history.push('/login')
 
             })
             .catch(err => console.log(err.response));
