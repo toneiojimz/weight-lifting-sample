@@ -3,12 +3,9 @@ import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import styled from "styled-components";
-<<<<<<< HEAD
-=======
 
 import desktopRegisterImage from '../images/register.jpg';
 import mobileRegisterImage from '../images/register-mobile.jpg'
->>>>>>> 7bcb5f480ffa66586445d44c0f4099af01a8fe15
 
 const Main = styled.div`
 height: 89vh;
@@ -26,12 +23,9 @@ background-color: #ffffff;
 padding: 20px;
 `;
 
-<<<<<<< HEAD
-=======
 const Input = styled(Field)`
 margin: 3%;
 `
->>>>>>> 7bcb5f480ffa66586445d44c0f4099af01a8fe15
 const Title = styled.h3`
 text-align: center;
 margin: 10%;
@@ -48,15 +42,6 @@ margin-top: 5%;
 margin-bottom: 5%;
 `
 
-<<<<<<< HEAD
-const ButtonReg = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-background-color: #17A2B8;
-`
-
-=======
 const Buttonc = styled.div`
 display: flex;
 align-items: center;
@@ -65,7 +50,6 @@ justify-content: center;
 
 
 
->>>>>>> 7bcb5f480ffa66586445d44c0f4099af01a8fe15
 const SignupForm = ({ values, errors, touched, status }) => {
     const [user, setUser] = useState([]);
 
@@ -79,11 +63,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
 
         <Main className="user-form" style={{backgroundImage: `url(${imageUrl})` }}>
             <Form2 >
-<<<<<<< HEAD
-                <Title>Let's Get Some Info Before We Start Lifting:</Title>
-=======
                 <Title>Wanna Register?</Title>
->>>>>>> 7bcb5f480ffa66586445d44c0f4099af01a8fe15
                 <Text>
                 <label className="label">Username</label>
                 <Input2 type="text" name="username" placeholder="Create a Username" />
@@ -96,20 +76,12 @@ const SignupForm = ({ values, errors, touched, status }) => {
                     <p className="errors"> {errors.password}</p>
                 )}
                 
-<<<<<<< HEAD
-                <ButtonReg>
-                    <button>Reigster New User</button>
-                </ButtonReg>
-                </Text>
-            </Form2>
-=======
                 <Buttonc>
                     <button className="button is-primary">Sign Up</button>
                 </Buttonc>
                 </Text>
             </Form2>
 
->>>>>>> 7bcb5f480ffa66586445d44c0f4099af01a8fe15
         </Main>
     );
 };

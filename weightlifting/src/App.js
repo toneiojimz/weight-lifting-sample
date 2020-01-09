@@ -5,15 +5,9 @@ import './App.css';
 
 import PrivateRoute from "./components/PrivateRoute.js";
 import Landing from "./components/Landing";
-<<<<<<< HEAD
-import Login from './components/Login';
-import Dashboard from './components/Dashboard';
-import SignUpForm from'./components/SignUpForm';
-=======
 import Dashboard from './components/Dashboard'
 import SignUpForm from'./components/SignUpForm'
 import Login from './components/Login';
->>>>>>> 7bcb5f480ffa66586445d44c0f4099af01a8fe15
 import WorkoutForm from './components/WorkoutForm';
 
 import logo from '../src/images/LiftlogoColored.png'
@@ -59,12 +53,8 @@ function App() {
       </Nav>
       <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
-<<<<<<< HEAD
-  
-=======
         <PrivateRoute path="/workoutform" component={WorkoutForm}/>
 
->>>>>>> 7bcb5f480ffa66586445d44c0f4099af01a8fe15
         <Route path="/login" component={Login} />
         <Route path="/register" component={SignUpForm} />
         <Route exact path="/" component ={Landing} />
