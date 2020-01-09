@@ -35,18 +35,6 @@ padding: 20px;
 
 const Dashboard = () => {
 
-<<<<<<< HEAD
-    return(
-        <div>
-            <h1>Workouts!</h1>
-
-            <button>
-            <Link to="/workoutform">Create Workout</Link>
-            </button>
-        </div>
-    )
-}
-=======
     const imageUrl = useWindowWidth() >= 650 ? desktopDashboardImage : mobileDashboardImage;
 
         return(
@@ -80,6 +68,5 @@ const useWindowWidth = () => {
 
     return windowWidth;
     };
->>>>>>> 7bcb5f480ffa66586445d44c0f4099af01a8fe15
 
 export default Dashboard
