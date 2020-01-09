@@ -7,7 +7,7 @@ import styled from "styled-components";
 import desktopRegisterImage from '../images/register.jpg';
 import mobileRegisterImage from '../images/register-mobile.jpg';
 
-const Main = styled.div`
+const MainRegister = styled.div`
 height: 89vh;
 display: flex;
 flex-direction: column;
@@ -56,7 +56,6 @@ height: 35px;
 color: white;
 `
 
-
 const SignupForm = ({ values, errors, touched, status }) => {
     const [user, setUser] = useState([]);
 
@@ -67,7 +66,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
     const imageUrl = useWindowWidth() >= 650 ? desktopRegisterImage : mobileRegisterImage;
 
     return (
-        <Main className="user-form" style={{backgroundImage: `url(${imageUrl})` }}>
+        <MainRegister className="user-form" style={{backgroundImage: `url(${imageUrl})` }}>
             <FormRegister >
                 <TitleRegister>Let's Get Some Info Before We Start Lifting:</TitleRegister>
                     <ContentRegister>
@@ -78,7 +77,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
                         <ButtonRegister>Register New User</ButtonRegister>
                     </ContentRegister>
             </FormRegister>
-        </Main>
+        </MainRegister>
     );
 };
 
@@ -96,7 +95,8 @@ const useWindowWidth = () => {
 
     return windowWidth;
     };
-
+    
+    
 const FormikUserForm = withFormik({
     mapPropsToValues({ username, password}) {
         return {
